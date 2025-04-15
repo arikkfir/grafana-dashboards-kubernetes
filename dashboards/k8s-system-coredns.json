@@ -1455,7 +1455,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"},instance)",
+        "definition": "label_values(up{job=\"$job\"},instance)",
         "hide": 0,
         "includeAll": true,
         "label": "",
@@ -1464,7 +1464,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(up{job=\"$job\", cluster=\"$cluster\"},instance)",
+          "query": "label_values(up{job=\"$job\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
