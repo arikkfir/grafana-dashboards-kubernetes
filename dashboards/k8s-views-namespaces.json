@@ -188,7 +188,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) / sum(machine_cpu_cores{cluster=\"$cluster\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) / sum(machine_cpu_cores)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -262,7 +262,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\", image!=\"\"}) / sum(machine_memory_bytes{cluster=\"$cluster\"})",
+          "expr": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\", image!=\"\"}) / sum(machine_memory_bytes)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -565,7 +565,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(machine_cpu_cores{cluster=\"$cluster\"})",
+          "expr": "sum(machine_cpu_cores)",
           "hide": false,
           "legendFormat": "Cluster Total",
           "range": true,
@@ -667,7 +667,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(machine_memory_bytes{cluster=\"$cluster\"})",
+          "expr": "sum(machine_memory_bytes)",
           "hide": false,
           "legendFormat": "Cluster Total",
           "range": true,
@@ -1227,7 +1227,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kube_pod_status_reason{cluster=\"$cluster\"}) by (reason)",
+          "expr": "sum(kube_pod_status_reason) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "range": true,
@@ -2907,14 +2907,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)",
+        "definition": "label_values(kube_pod_info, namespace)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)",
+          "query": "label_values(kube_pod_info, namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2988,7 +2988,7 @@
         "name": "created_by",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{namespace=~\"$namespace\", cluster=\"$cluster\"},created_by_name)",
+          "query": "label_values(kube_pod_info{namespace=~\"$namespace\"},created_by_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,

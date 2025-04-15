@@ -252,7 +252,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "apiserver_requested_deprecated_apis{cluster=~\"$cluster\"}",
+          "expr": "apiserver_requested_deprecated_apis",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -424,7 +424,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (code) (rate(apiserver_request_total{cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum by (code) (rate(apiserver_request_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ code }}",
           "refId": "A"
@@ -518,7 +518,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (verb) (rate(apiserver_request_total{cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum by (verb) (rate(apiserver_request_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb}}",
           "refId": "A"
@@ -988,7 +988,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(apiserver_request_total{cluster=~\"$cluster\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(apiserver_request_total[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"

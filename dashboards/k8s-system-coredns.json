@@ -841,7 +841,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_requests_total{cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum(rate(coredns_forward_requests_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "total forward requests",
           "refId": "A"
@@ -1140,7 +1140,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(coredns_cache_entries{cluster=~\"$cluster\"}) by (type)",
+          "expr": "sum(coredns_cache_entries) by (type)",
           "interval": "",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -1459,7 +1459,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(coredns_dns_requests_total{cluster=\"$cluster\"}, proto)",
+        "definition": "label_values(coredns_dns_requests_total, proto)",
         "hide": 0,
         "includeAll": false,
         "label": "",
@@ -1467,7 +1467,7 @@
         "name": "protocol",
         "options": [],
         "query": {
-          "query": "label_values(coredns_dns_requests_total{cluster=\"$cluster\"}, proto)",
+          "query": "label_values(coredns_dns_requests_total, proto)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1540,7 +1540,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(coredns_build_info{cluster=\"$cluster\"},job)",
+        "definition": "label_values(coredns_build_info,job)",
         "hide": 0,
         "includeAll": false,
         "multi": true,
@@ -1548,7 +1548,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(coredns_build_info{cluster=\"$cluster\"},job)",
+          "query": "label_values(coredns_build_info,job)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
